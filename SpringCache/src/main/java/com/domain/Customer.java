@@ -1,15 +1,37 @@
 package com.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
+
 // TODO: Add Hibernate annotations etc.
 
+@Entity
 public class Customer {
 	// id, username, firstname, lastname, email
 	
+	@Id
+	@GeneratedValue(generator="increment")
+	@GenericGenerator(name="increment", strategy="increment")
 	private Long id;
+	
+	@Column(name="username")
 	private String username;
+	
+	@Column(name="firstname")
 	private String firstname;
+	
+	@Column(name="lastname")
 	private String lastname;
+	
+	@Column(name="email")
 	private String email;
+	
+//	private Customer() {} // For JPA
+	
 	public String getUsername() {
 		return username;
 	}
